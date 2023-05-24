@@ -10,3 +10,16 @@ std::string padText(const std::string& text) {
     }
     return paddedText;
 }
+
+// Функція для шифрування символу
+std::bitset<16> encryptCharacter(char c, int position) {
+    std::bitset<16> encrypted;
+    unsigned char asciiCode = static_cast<unsigned char>(c);
+
+    encrypted |= (asciiCode >> 4);        // Старша частина ASCII-коду
+    encrypted |= (position << 4);         // Позиція символу
+    encrypted |= ((asciiCode & 0x0F) << 11); // Молодша частина ASCII-коду
+    encrypted |= encrypted.count() % 2;   // Біт парності
+
+    return encrypted;
+}
