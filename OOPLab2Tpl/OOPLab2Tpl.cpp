@@ -37,6 +37,7 @@ bitset<16>* encryptText(const string& text) {
     return encryptedText;
 }
 
+
 int main() {
     string inputText;
     cout << "Введіть текст до 128 символів: ";
@@ -51,6 +52,15 @@ int main() {
     }
 
     delete[] encryptedText;
+
+    int a, b, c, d;
+    cout << "Введіть значення для a, b, c та d: ";
+    cin >> a >> b >> c >> d;
+
+    // Обчислення виразу з використанням побітових операцій
+    int result = (37 * b) + (((d << 5) + (a << 4)) >> 11) - (65 * c) + (d << 3);
+
+    cout << "Результат: " << result << endl;
 
     return 0;
 }
