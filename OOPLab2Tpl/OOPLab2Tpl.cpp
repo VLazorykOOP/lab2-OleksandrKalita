@@ -23,3 +23,15 @@ std::bitset<16> encryptCharacter(char c, int position) {
 
     return encrypted;
 }
+
+// Функція для шифрування тексту
+std::bitset<16>* encryptText(const std::string& text) {
+    std::bitset<16>* encryptedText = new std::bitset<16>[128];
+
+    for (int i = 0; i < text.length(); i++) {
+        char c = text[i];
+        encryptedText[i] = encryptCharacter(c, i);
+    }
+
+    return encryptedText;
+}
